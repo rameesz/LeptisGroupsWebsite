@@ -442,7 +442,10 @@ export default function AdminDashboard() {
         // Append all text settings, avoiding urls or file placeholders
         Object.keys(settingsForm).forEach(key => {
             if (
-                !key.endsWith('_url') && 
+                key !== 'hero_bg_url' &&
+                key !== 'about_team_img_url' &&
+                key !== 'home_about_img_url' &&
+                key !== 'consult_img_url' &&
                 key !== 'hero_bg' && 
                 key !== 'about_team_img' && 
                 key !== 'home_about_img' && 
