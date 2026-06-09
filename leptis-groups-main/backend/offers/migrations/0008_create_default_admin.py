@@ -7,7 +7,7 @@ def create_default_admin(apps, schema_editor):
         User.objects.create_superuser(
             username='admin',
             email='leptisgroupsit@gmail.com',
-            password='leptis2026'
+            password='Leptis%$@#2026*$'
         )
 
 def remove_default_admin(apps, schema_editor):
