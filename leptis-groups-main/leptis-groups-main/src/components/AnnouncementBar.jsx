@@ -51,7 +51,7 @@ export default function AnnouncementBar() {
         <div className="flex items-center gap-4">
           <span className="text-slate-500 text-[10px] uppercase tracking-wider font-semibold select-none hidden sm:inline">Connect with us</span>
           <div className="flex items-center gap-3">
-            {fbUrl && fbUrl !== "#" && (
+            {fbUrl && fbUrl.trim() !== "" && (
               <a 
                 href={fbUrl} 
                 target="_blank" 
@@ -61,7 +61,7 @@ export default function AnnouncementBar() {
                 <FaFacebookF className="text-xs" />
               </a>
             )}
-            {instaUrl && instaUrl !== "#" && (
+            {instaUrl && instaUrl.trim() !== "" && (
               <a 
                 href={instaUrl} 
                 target="_blank" 
@@ -71,7 +71,7 @@ export default function AnnouncementBar() {
                 <FaInstagram className="text-xs" />
               </a>
             )}
-            {linkedinUrl && linkedinUrl !== "#" && (
+            {linkedinUrl && linkedinUrl.trim() !== "" && (
               <a 
                 href={linkedinUrl} 
                 target="_blank" 

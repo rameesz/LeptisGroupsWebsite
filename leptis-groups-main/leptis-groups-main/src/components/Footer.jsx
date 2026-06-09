@@ -39,7 +39,7 @@ export default function Footer() {
                             { url: linkedinUrl, icon: <FaLinkedinIn />, label: "LinkedIn" },
                             { url: twitterUrl, icon: <FaTwitter />, label: "Twitter" }
                         ].map((social, idx) => (
-                            social.url && social.url !== "#" && (
+                            social.url && social.url.trim() !== "" && (
                                 <a 
                                     key={idx}
                                     href={social.url} 
