@@ -4,12 +4,30 @@
  * and localhost (for server-side fetches or default local work).
  */
 export const getBackendUrl = () => {
+  // Set your production backend URL here.
+  // Update this to your actual cPanel API domain (e.g. "https://api.leptisgroups.com")
+  const PRODUCTION_BACKEND_URL = "https://api.leptisgroups.com"; 
+
   if (typeof window !== "undefined") {
-    // If the browser accessed via LAN IP (e.g. 192.168.1.211:3000), 
-    // the backend requests will target the same LAN host on port 8001 (192.168.1.211:8001).
-    return `http://${window.location.hostname}:8001`;
+    const hostname = window.location.hostname;
+    // Check if the application is accessed locally or via local network (LAN)
+    const isLocal = 
+      hostname === "localhost" || 
+      hostname === "127.0.0.1" || 
+      hostname.startsWith("192.168.") || 
+      hostname.startsWith("10.") || 
+      hostname.startsWith("172.");
+
+    if (isLocal) {
+      return `http://${hostname}:8001`;
+    }
+    return PRODUCTION_BACKEND_URL;
   }
-  // Fallback for SSR/SSG running on the host machine
+  
+  // Fallback for Server-Side Rendering (SSR)
+  if (process.env.NODE_ENV === "production") {
+    return PRODUCTION_BACKEND_URL;
+  }
   return "http://127.0.0.1:8001";
 };
 
